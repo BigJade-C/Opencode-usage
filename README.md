@@ -32,7 +32,7 @@ npm install
 npm run build
 npm test
 npm pack
-opencode plugin .\bigjade-opencode-usage-0.1.2.tgz --global
+opencode plugin .\bigjade-opencode-usage-0.1.3.tgz --global
 ```
 
 Restart OpenCode after installation.
