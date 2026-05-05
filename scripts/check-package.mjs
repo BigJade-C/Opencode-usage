@@ -58,8 +58,8 @@ const requiredDisplaySourceText = [
   ["formatCompactDateTime", "source must compact reset timestamps"],
   ["formatResetValue(props.reset)", "source must compact reset timestamps at render time"],
   ['`${year}-${month}-${day} ${hour}:${minute}`', "source must format reset time as YYYY-MM-DD HH:mm"],
-  ['codexWindow(rateLimit, "primary_window", "Session")', "source must label Codex primary window as Session"],
-  ['codexWindow(rateLimit, "secondary_window", "Week")', "source must label Codex secondary window as Week"],
+  ['codexWindow(rateLimit, "primary_window", "5h")', "source must label Codex primary window as 5h"],
+  ['codexWindow(rateLimit, "secondary_window", "7d")', "source must label Codex secondary window as 7d"],
 ]
 
 for (const [required, message] of requiredRefreshSourceText) {
@@ -75,7 +75,12 @@ for (const removed of removedDisplayText) {
   if (source.includes(removed)) fail(`source must not render verbose usage detail text: ${removed}`)
 }
 
-const removedCodexLabels = ['codexWindow(rateLimit, "primary_window", "primary")', 'codexWindow(rateLimit, "secondary_window", "secondary")']
+const removedCodexLabels = [
+  'codexWindow(rateLimit, "primary_window", "primary")',
+  'codexWindow(rateLimit, "secondary_window", "secondary")',
+  'codexWindow(rateLimit, "primary_window", "Session")',
+  'codexWindow(rateLimit, "secondary_window", "Week")',
+]
 for (const removed of removedCodexLabels) {
   if (source.includes(removed)) fail(`source must not expose raw Codex window labels: ${removed}`)
 }

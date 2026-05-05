@@ -486,7 +486,7 @@ function codexWindow(record, key, label) {
 function parseCodexUsage(payload, active, model) {
   if (!isRecord(payload)) return void 0;
   const rateLimit = isRecord(payload.rate_limit) ? payload.rate_limit : payload;
-  const rows = [codexWindow(rateLimit, "primary_window", "Session"), codexWindow(rateLimit, "secondary_window", "Week")].filter((row) => Boolean(row));
+  const rows = [codexWindow(rateLimit, "primary_window", "5h"), codexWindow(rateLimit, "secondary_window", "7d")].filter((row) => Boolean(row));
   if (!rows.length) return void 0;
   return {
     status: usageStatus(rows),
