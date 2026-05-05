@@ -58,6 +58,8 @@ const requiredDisplaySourceText = [
   ["formatCompactDateTime", "source must compact reset timestamps"],
   ["formatResetValue(props.reset)", "source must compact reset timestamps at render time"],
   ['`${year}-${month}-${day} ${hour}:${minute}`', "source must format reset time as YYYY-MM-DD HH:mm"],
+  ['codexWindow(rateLimit, "primary_window", "Session")', "source must label Codex primary window as Session"],
+  ['codexWindow(rateLimit, "secondary_window", "Week")', "source must label Codex secondary window as Week"],
 ]
 
 for (const [required, message] of requiredRefreshSourceText) {
@@ -71,6 +73,11 @@ for (const [required, message] of requiredDisplaySourceText) {
 const removedDisplayText = ["provider {", "account {", "usage model {", "quota {", "statusColor"]
 for (const removed of removedDisplayText) {
   if (source.includes(removed)) fail(`source must not render verbose usage detail text: ${removed}`)
+}
+
+const removedCodexLabels = ['codexWindow(rateLimit, "primary_window", "primary")', 'codexWindow(rateLimit, "secondary_window", "secondary")']
+for (const removed of removedCodexLabels) {
+  if (source.includes(removed)) fail(`source must not expose raw Codex window labels: ${removed}`)
 }
 
 if (!distTui.includes("opencode-usage.refresh")) fail("dist must include the OpenCode usage refresh command")

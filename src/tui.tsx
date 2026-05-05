@@ -590,8 +590,8 @@ function parseCodexUsage(payload: unknown, active: ActiveModel, model?: string):
 
   const rateLimit = isRecord(payload.rate_limit) ? payload.rate_limit : payload
   const rows = [
-    codexWindow(rateLimit, "primary_window", "primary"),
-    codexWindow(rateLimit, "secondary_window", "secondary"),
+    codexWindow(rateLimit, "primary_window", "Session"),
+    codexWindow(rateLimit, "secondary_window", "Week"),
   ].filter((row): row is UsageWindow => Boolean(row))
 
   if (!rows.length) return undefined
