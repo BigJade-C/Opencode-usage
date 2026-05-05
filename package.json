@@ -1,0 +1,44 @@
+{
+  "name": "@bigjade/opencode-usage",
+  "version": "0.1.2",
+  "description": "OpenCode TUI sidebar plugin for provider usage and quota visibility",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./tui": {
+      "types": "./dist/tui.d.ts",
+      "default": "./dist/tui.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node scripts/check-package.mjs",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20",
+    "opencode": ">=1.14.0"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.14.35",
+    "@opencode-ai/sdk": "^1.14.35",
+    "@opentui/solid": "^0.2.2",
+    "solid-js": "^1.9.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/node": "^24.10.1",
+    "babel-preset-solid": "^1.9.12",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
